@@ -33,8 +33,8 @@ plot_stuff(
 
 # Rys 6
 plot_stuff(
-    Series(DATASET.OKE_CCl4, "Delay", "15C", "CCl4 w 15C"),
     Series(DATASET.OKE_chloroform, "Delay", "15C", "Chloroform w 15C"),
+    Series(DATASET.OKE_CCl4, "Delay", "15C", "CCl4 w 15C"),
     x_label=Label.time,
     y_label=Label.amplitude,
     in_x_min=-1000.,
@@ -44,19 +44,21 @@ plot_stuff(
 
 # Rys 7.1
 plot_stuff(
-    Series(DATASET.OKE_CCl4, "Delay", "15C"),
+    Series(DATASET.OKE_CCl4, "Delay", "15C", "CCl4 w 15C"),
     x_label=Label.time,
     y_label=Label.amplitude,
     y_scale="log",
-    y_limits=(0.0001, 1.)
+    y_limits=(0.0001, 1.),
+    show_legend=True
 )
 # Rys 7.2
 plot_stuff(
-    Series(DATASET.OKE_chloroform, "Delay", "15C"),
+    Series(DATASET.OKE_chloroform, "Delay", "15C", "Chloroform w 15C"),
     x_label=Label.time,
     y_label=Label.amplitude,
     y_scale="log",
-    y_limits=(0.0001, 1.)
+    y_limits=(0.0001, 1.),
+    show_legend=True
 )
 
 # Rys 8
@@ -106,7 +108,7 @@ plot_stuff(
     in_x_min=-100.,
     in_x_max=5000.,
     show_legend=True,
-    y_limits=(-0.08, 0.12)
+    y_limits=(-0.07, 0.11)
 )
 
 # Rys 14
