@@ -22,8 +22,8 @@ plot_stuff(
 
 # Rys 3
 plot_stuff(
-    Series(DATASET.Raman_CCl4, "Wavenumber", "parallel", "parallel"),
-    Series(DATASET.Raman_CCl4, "Wavenumber", "perpendicular", "perpendicular"),
+    Series(DATASET.Raman_CCl4, "Wavenumber", "parallel", "polaryzacja równoległa"),
+    Series(DATASET.Raman_CCl4, "Wavenumber", "perpendicular", "polaryzacja prostopadła"),
     x_label=Label.wavenumber,
     y_label=Label.amplitude,
     in_x_min=0,
@@ -33,8 +33,8 @@ plot_stuff(
 
 # Rys 6
 plot_stuff(
-    Series(DATASET.OKE_CCl4, "Delay", "15C", "CCl4 at 15C"),
-    Series(DATASET.OKE_chloroform, "Delay", "15C", "Chloroform at 15C"),
+    Series(DATASET.OKE_CCl4, "Delay", "15C", "CCl4 w 15C"),
+    Series(DATASET.OKE_chloroform, "Delay", "15C", "Chloroform w 15C"),
     x_label=Label.time,
     y_label=Label.amplitude,
     in_x_min=-1000.,
@@ -42,26 +42,27 @@ plot_stuff(
     show_legend=True
 )
 
-# TODO: cut off Y (1e-4 to 1)
 # Rys 7.1
 plot_stuff(
     Series(DATASET.OKE_CCl4, "Delay", "15C"),
     x_label=Label.time,
     y_label=Label.amplitude,
-    y_scale="log"
+    y_scale="log",
+    y_limits=(0.0001, 1.)
 )
 # Rys 7.2
 plot_stuff(
     Series(DATASET.OKE_chloroform, "Delay", "15C"),
     x_label=Label.time,
     y_label=Label.amplitude,
-    y_scale="log"
+    y_scale="log",
+    y_limits=(0.0001, 1.)
 )
 
 # Rys 8
 plot_stuff(
-    Series(DATASET.OKE_CCl4, "Delay", "15C", "CCl4 at 15C"),
-    Series(DATASET.OKE_chloroform, "Delay", "15C", "Chloroform at 15C"),
+    Series(DATASET.OKE_CCl4, "Delay", "15C", "CCl4 w 15C"),
+    Series(DATASET.OKE_chloroform, "Delay", "15C", "Chloroform w 15C"),
     x_label=Label.wavenumber,
     y_label=Label.amplitude,
     in_x_min=100.,
@@ -73,8 +74,8 @@ plot_stuff(
 
 # Rys 9
 plot_stuff(
-    Series(DATASET.Raman_chloroform, "Wavenumber", "parallel", "parallel"),
-    Series(DATASET.Raman_chloroform, "Wavenumber", "perpendicular", "perpendicular"),
+    Series(DATASET.Raman_chloroform, "Wavenumber", "parallel", "polaryzacja równoległa"),
+    Series(DATASET.Raman_chloroform, "Wavenumber", "perpendicular", "polaryzacja prostopadła"),
     x_label=Label.wavenumber,
     y_label=Label.amplitude,
     in_x_min=0,
@@ -84,8 +85,8 @@ plot_stuff(
 
 # Rys 12
 plot_stuff(
-    Series(DATASET.Raman_chloroform, "Wavenumber", "parallel", "Chloroform parallel"),
-    Series(DATASET.Raman_CCl4, "Wavenumber", "parallel", "CCl4 parallel"),
+    Series(DATASET.Raman_chloroform, "Wavenumber", "parallel", "Chloroform - polaryzacja równoległa"),
+    Series(DATASET.Raman_CCl4, "Wavenumber", "parallel", "CCl4 - polaryzacja równoległa"),
     x_label=Label.wavenumber,
     y_label=Label.amplitude,
     in_x_min=0,
@@ -93,7 +94,6 @@ plot_stuff(
     show_legend=True
 )
 
-# TODO: Y cutoff, by a special value (~0.12 is the new max)
 # Rys 13
 plot_stuff(
     Series(DATASET.OKE_CCl4, "Delay", "-5C", "-5C"),
@@ -105,10 +105,10 @@ plot_stuff(
     y_label=Label.amplitude,
     in_x_min=-100.,
     in_x_max=5000.,
-    show_legend=True
+    show_legend=True,
+    y_limits=(-0.08, 0.12)
 )
 
-# TODO: Y cutoff: 1e-4 to 1
 # Rys 14
 plot_stuff(
     Series(DATASET.OKE_chloroform, "Delay", "-5C", "-5C"),
@@ -118,7 +118,8 @@ plot_stuff(
     x_label=Label.time,
     y_label=Label.amplitude,
     show_legend=True,
-    y_scale="log"
+    y_scale="log",
+    y_limits=(0.0001, 1.)
 )
 
 # Rys 15

@@ -31,9 +31,9 @@ DATASET_FILENAMES = {
 
 
 class Label:
-    wavenumber = "Wavenumber [cm^-1]"
-    time = "Time [fs]"
-    amplitude = "Amplitude"
+    wavenumber = "Liczba falowa [cm^-1]"
+    time = "Opóźnienie [fs]"
+    amplitude = "Amplituda"
 
 
 # freq - frequency in fs^-1 = 10^15 Hz
@@ -98,7 +98,8 @@ def plot_stuff(
     normalized=False,
     fourierized=False,
     show_legend=False,
-    y_scale="linear"
+    y_scale="linear",
+    y_limits=None
 ):
     for series in serieses:
         add_series(
@@ -116,6 +117,8 @@ def plot_stuff(
     plt.yscale(y_scale)
     plt.xlabel(x_label)
     plt.ylabel(y_label)
+    if y_limits is not None:
+        plt.ylim(y_limits)
     if show_legend:
         plt.legend(loc='upper right')
     plt.grid()
