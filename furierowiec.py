@@ -60,10 +60,10 @@ def add_series(
     dataset,
     x_col,
     y_col,
-    in_x_min,     # the max and min values
-    in_x_max,      # could be set to some kind of infinity
-    res_x_min,    # or system max/min
-    res_x_max,     # but these are good enough for this task
+    in_x_min,
+    in_x_max,
+    res_x_min,
+    res_x_max,
     normalized,
     fourierized
 ):
@@ -76,11 +76,8 @@ def add_series(
     if fourierized:
         xs, ys = fourier(xs, ys)
 
-    # TODO: res_x_min does not work correctly
-    # if set to non-zero, Xs and Ys will diverge
-    # Fix: find indices and then use xs[s:e], ys[s:e]
-    xs = [x for x in xs if res_x_min <= x <= res_x_max]
-    ys = ys[:len(xs)]
+    # cut off results out of bounds and their values
+    xs, ys = zip(*[(a, b) for a, b in zip(xs, ys) if res_x_min <= a <= res_x_max])
 
     if normalized:
         ys = [y / max(ys[:]) for y in ys]
@@ -117,5 +114,3 @@ def plot_stuff(
     plt.ylabel(y_label)
     plt.grid()
     plt.show()
-
-

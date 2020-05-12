@@ -20,6 +20,7 @@ plot_stuff(
     fourierized=True
 )
 
+# TODO: Add some labels to know which line shows which series
 # Rys 3
 plot_stuff(
     Series(DATASET.Raman_CCl4, "Wavenumber", "parallel"),
