@@ -14,10 +14,11 @@ class DATASET(Enum):
 
 
 class Series(object):
-    def __init__(self, dataset, x_col, y_col):
+    def __init__(self, dataset, x_col, y_col, label="signal"):
         self.dataset = dataset
         self.x_col = x_col
         self.y_col = y_col
+        self.label = label
 
 
 DATA_LOCATION = "data/csv"
@@ -60,6 +61,7 @@ def add_series(
     dataset,
     x_col,
     y_col,
+    label,
     in_x_min,
     in_x_max,
     res_x_min,
@@ -82,7 +84,7 @@ def add_series(
     if normalized:
         ys = [y / max(ys[:]) for y in ys]
 
-    plt.plot(xs, ys)
+    plt.plot(xs, ys, label=label)
 
 
 def plot_stuff(
@@ -95,6 +97,7 @@ def plot_stuff(
     res_x_max=1000000.,     # but these are good enough for this task
     normalized=False,
     fourierized=False,
+    show_legend=False,
     y_scale="linear"
 ):
     for series in serieses:
@@ -102,6 +105,7 @@ def plot_stuff(
             series.dataset,
             series.x_col,
             series.y_col,
+            series.label,
             in_x_min,
             in_x_max,
             res_x_min,
@@ -112,5 +116,7 @@ def plot_stuff(
     plt.yscale(y_scale)
     plt.xlabel(x_label)
     plt.ylabel(y_label)
+    if show_legend:
+        plt.legend(loc='upper right')
     plt.grid()
     plt.show()
